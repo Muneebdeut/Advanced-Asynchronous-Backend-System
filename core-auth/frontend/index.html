@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Core-Auth</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="page">
+      <header class="header">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-text">Core-Auth</span>
+        </div>
+        <p class="tagline">Async authentication engine</p>
+      </header>
+
+      <main class="main">
+        <section id="view-guest" class="card" hidden>
+          <div class="tabs" role="tablist">
+            <button type="button" class="tab active" role="tab" id="tab-login" aria-selected="true">
+              Sign in
+            </button>
+            <button type="button" class="tab" role="tab" id="tab-register" aria-selected="false">
+              Register
+            </button>
+          </div>
+
+          <div id="alert" class="alert" role="alert" hidden></div>
+
+          <form id="panel-login" class="panel">
+            <label class="field">
+              <span>Email</span>
+              <input type="email" name="email" autocomplete="email" required placeholder="you@example.com" />
+            </label>
+            <label class="field">
+              <span>Password</span>
+              <input type="password" name="password" autocomplete="current-password" required />
+            </label>
+            <button type="submit" class="btn btn-primary">Sign in</button>
+          </form>
+
+          <form id="panel-register" class="panel" hidden>
+            <label class="field">
+              <span>Email</span>
+              <input type="email" name="email" autocomplete="email" required placeholder="you@example.com" />
+            </label>
+            <label class="field">
+              <span>Password</span>
+              <input type="password" name="password" autocomplete="new-password" required minlength="8" />
+            </label>
+            <p class="hint">Password must be 8–128 characters.</p>
+            <button type="submit" class="btn btn-primary">Create account</button>
+          </form>
+        </section>
+
+        <section id="view-dashboard" class="card" hidden>
+          <div class="dashboard-head">
+            <h2>Your account</h2>
+            <span id="status-pill" class="pill pill-ok">Active</span>
+          </div>
+
+          <div id="alert-dash" class="alert" role="alert" hidden></div>
+
+          <dl class="profile">
+            <div><dt>Email</dt><dd id="profile-email">—</dd></div>
+            <div><dt>User ID</dt><dd id="profile-id">—</dd></div>
+            <div><dt>Member since</dt><dd id="profile-created">—</dd></div>
+            <div><dt>Role</dt><dd id="profile-role">—</dd></div>
+          </dl>
+
+          <div class="actions">
+            <button type="button" id="btn-refresh" class="btn btn-secondary">Refresh tokens</button>
+            <button type="button" id="btn-logout" class="btn btn-ghost">Sign out</button>
+          </div>
+        </section>
+
+        <p id="loading" class="loading">Connecting…</p>
+      </main>
+
+      <footer class="footer">
+        <a href="/docs" target="_blank" rel="noopener">API docs</a>
+        <span class="dot">·</span>
+        <span id="health-status">Checking API…</span>
+      </footer>
+    </div>
+    <script src="/js/app.js" defer></script>
+  </body>
+</html>
